@@ -1,0 +1,6 @@
+###服务别名--该服务注册到服务中心的名称
+spring:
+  application:
+    name: app-eureka
+  profiles:
+    active: server1

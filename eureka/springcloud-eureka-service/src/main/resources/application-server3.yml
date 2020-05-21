@@ -1,0 +1,24 @@
+### Eureka注册中心3
+server:
+  port: 9100
+###服务别名--该服务注册到服务中心的名称
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    ### 注册中心ip地址
+    hostname: eureka-server3
+    #访问路径可以显示ip地址
+    #prefer-ip-address: true
+    #自定义入驻别名
+    #instance-id: euserver2:8100
+  client:
+    serviceUrl:
+    ###注册中心地址
+      #defaultZone: http://${eureka.instance.hostname}:8100/eureka/,http://${eureka.instance.hostname}:9100/eureka/
+      defaultZone: http://eureka-server1:7100/eureka/,http://eureka-server2:8100/eureka/
+    ###要将自己注册到注册中心
+    register-with-eureka: true
+    ### 要去检索服务信息
+    fetch-registry: true
