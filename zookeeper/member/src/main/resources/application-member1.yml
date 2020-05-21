@@ -1,0 +1,7 @@
+server:
+  port: 8101
+spring:
+  cloud:
+    zookeeper:
+      ###当前会员服务注册到zookeeper注册中心
+      connect-string: 127.0.0.1:2181
