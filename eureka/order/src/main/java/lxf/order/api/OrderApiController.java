@@ -10,6 +10,7 @@ public class OrderApiController {
     @Autowired
     private RestTemplate restTemplate;
 
+
     @GetMapping("/getOrder")
     public String getOrder(){
         //两种方式调用member服务接口，一种是直接通过member ipd地址调用，另一种是通过注册中心获取member的ip地址然后调用
