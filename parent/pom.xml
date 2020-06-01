@@ -32,6 +32,11 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- SpringCloud整合feign客户端 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <!-- eureka客户端依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
