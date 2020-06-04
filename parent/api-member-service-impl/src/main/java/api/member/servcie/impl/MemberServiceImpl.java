@@ -2,6 +2,7 @@ package api.member.servcie.impl;
 
 import api.member.entity.User;
 import api.member.service.IMemberServcie;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberServiceImpl implements IMemberServcie {
 
     @Override
-    @RequestMapping("/getMember")
+    @GetMapping("/getMember")
     public User getMember(@RequestParam("name") String name) {
         User user = new User();
         user.setName(name);
