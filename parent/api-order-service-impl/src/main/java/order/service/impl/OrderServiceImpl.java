@@ -1,5 +1,6 @@
 package order.service.impl;
 
+import api.common.base.ResponseBase;
 import api.member.entity.User;
 import order.service.IOrderService;
 import order.service.feign.MemberServiceFeign;
@@ -21,5 +22,11 @@ public class OrderServiceImpl implements IOrderService {
     public String orderToMember(String name) {
         User user = memberServiceFeign.getMember(name);
         return user==null ? "找不到用户信息" : user.toString();
+    }
+
+    @RequestMapping("/orderToMemberUserInfo")
+    @Override
+    public ResponseBase orderToMemberUserInfo() {
+        return memberServiceFeign.getUserInfo();
     }
 }

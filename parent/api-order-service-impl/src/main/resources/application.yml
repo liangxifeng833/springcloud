@@ -13,3 +13,10 @@ eureka:
     register-with-eureka: true
     ###需要去检索服务信息
     fetch-registry:   true
+
+### SpringCloud feign 默认开启支持ribbon负载均衡
+ribbon:
+  ##建立连接时需要的时间5秒, 适用于网络状态正常情况下,两端连接所用的时间
+  ReadTimeout: 5000
+  ##建立连接后从服务器读取到可用资源所用的时间,默认1秒,这里配置5秒
+  ConnectTimeout: 5000

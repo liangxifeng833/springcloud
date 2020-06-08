@@ -17,6 +17,7 @@
         <module>api-service</module>
         <module>api-member-service-impl</module>
         <module>api-order-service-impl</module>
+        <module>api-common</module>
     </modules>
     <packaging>pom</packaging>
     <dependencyManagement>
