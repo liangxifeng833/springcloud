@@ -4,6 +4,7 @@ import api.common.base.BaseApiService;
 import api.common.base.ResponseBase;
 import api.member.entity.User;
 import api.member.service.IMemberServcie;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,12 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class MemberServiceImpl extends BaseApiService implements IMemberServcie {
+    @Value("${server.port}")
+    private Integer serverPort;
 
     @Override
     @GetMapping("/getMember")
     public User getMember(@RequestParam("name") String name) {
         User user = new User();
-        user.setName(name);
+        user.setName(name+serverPort);
         user.setAge(20);
         return user;
     }
