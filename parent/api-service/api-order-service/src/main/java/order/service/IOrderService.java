@@ -14,4 +14,9 @@ public interface IOrderService {
     //订单服务接口调用会员服务接口的getUserInfo
     @RequestMapping("/orderToMemberUserInfo")
     public ResponseBase orderToMemberUserInfo();
+
+    //订单服务接口
+    @RequestMapping("/orderInfo")
+    public ResponseBase orderInfo();
+
 }

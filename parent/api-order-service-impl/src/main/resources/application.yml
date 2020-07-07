@@ -20,3 +20,17 @@ ribbon:
   ReadTimeout: 5000
   ##建立连接后从服务器读取到可用资源所用的时间,默认1秒,这里配置5秒
   ConnectTimeout: 5000
+
+### 开启Hystrix断路器
+feign:
+  hystrix:
+    enabled: true
+
+### 禁用hystrix超时时间,默认1秒
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+
