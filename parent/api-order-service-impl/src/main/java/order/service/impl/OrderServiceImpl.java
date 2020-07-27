@@ -58,6 +58,17 @@ public class OrderServiceImpl extends BaseApiService implements IOrderService {
         return memberServiceFeign.getUserInfo(); //getUserInfo()有1.5秒的延时
     }
 
+    /**
+     * Hystrix第二种写法,使用类方式实现服务降级
+     * @return
+     */
+    @RequestMapping("/orderToMemberUserInfoHystrix_demo02")
+    public ResponseBase orderToMemberUserInfoHystrixDemo02() {
+        //输出：orderToMemberUserInfoHystrix-线程池名称：hystrix-OrderServiceImpl-1
+        System.out.println("orderToMemberUserInfoHystrix-线程池名称："+Thread.currentThread().getName());
+        return memberServiceFeign.getUserInfo(); //getUserInfo()有1.5秒的延时
+    }
+
     public ResponseBase orderToMemberUserInfoHystrixFallback() {
         return setResultSuccess("返回一个友好的提示：服务降级，服务器忙，请稍后重试!");
     }

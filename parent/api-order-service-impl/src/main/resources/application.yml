@@ -27,10 +27,10 @@ feign:
     enabled: true
 
 ### 禁用hystrix超时时间,默认1秒
-hystrix:
-  command:
-    default:
-      execution:
-        timeout:
-          enabled: true
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
 
