@@ -7,7 +7,6 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-
 /**
  * 网关token过滤器
  * @author liangxifeng
