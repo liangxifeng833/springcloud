@@ -7,7 +7,10 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import order.service.IOrderService;
 import order.service.feign.MemberServiceFeign;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,6 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderServiceImpl extends BaseApiService implements IOrderService {
     @Autowired
     private MemberServiceFeign memberServiceFeign;
+    @Value("${server.port}")
+    private Integer serverPort;
+
+    @GetMapping("/")
+    public String index() {
+        return "我是订单服务,port="+serverPort;
+    }
 
 
     @RequestMapping("/orderToMember")

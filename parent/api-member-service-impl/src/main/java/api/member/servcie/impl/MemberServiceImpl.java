@@ -17,6 +17,11 @@ public class MemberServiceImpl extends BaseApiService implements IMemberServcie 
     @Value("${server.port}")
     private Integer serverPort;
 
+    @GetMapping("/")
+    public String index() {
+        return "我是会员服务,port="+serverPort;
+    }
+
     @Override
     @GetMapping("/getMember")
     public User getMember(@RequestParam("name") String name) {

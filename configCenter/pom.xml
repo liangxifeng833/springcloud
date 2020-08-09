@@ -17,6 +17,7 @@
     <modules>
         <module>config2.0_server</module>
         <module>config2.0_client</module>
+        <module>zuul_gateway</module>
     </modules>
 
     <dependencyManagement>
