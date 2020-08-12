@@ -1,5 +1,5 @@
 server:
-  port: 8102
+  port: 8302
 ###服务别名--该服务注册到服务中心的名称
 spring:
   application:

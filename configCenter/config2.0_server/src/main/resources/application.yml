@@ -1,5 +1,5 @@
 server:
-  port: 8101
+  port: 8201
 
 ###服务别名--该服务注册到服务中心的名称
 spring:
@@ -11,8 +11,9 @@ spring:
         git:
           #configServer 读取git环境的地址
           uri: https://github.com/liangxifeng833/gkconfig.git
-          #查找会员服务配置文件，git中的目录名
+          #查找会员服务配置文件，git中的目录名 会员服务配置和网关服务配置
           search-paths:
+            - zuul-config
             - member-config
           #读取git的分支
           label: master
