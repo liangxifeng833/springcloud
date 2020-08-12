@@ -1,0 +1,46 @@
+server:
+  port: 8202
+
+###服务别名--该服务注册到服务中心的名称
+spring:
+  application:
+    #这里的服务别名=要读取git的配置文件的服务名称
+    #配置文件命名规范：服务名-环境.yml(service-zuul-dev.yml)
+    name: service-zuul
+  cloud:
+    config:
+      #读取配置文件的环境(service-zuul-dev.yml)中的dev
+      profile: dev
+      #读取配置文件服务的config-server环境
+      #也就是配置中心服务端在eureka注册的服务别名
+      discovery:
+        service-id: config-server
+        #开启读取权限
+        enabled: true
+### 将zuul api转发规则作为动态参数,配置到github中
+### git地址:https://github.com/liangxifeng833/gkconfig/blob/master/zuul-config/zuul-gateway-dev.yml
+#zuul:
+#  routes:
+#    ### 定义转发规则，这里的api-a是自定义的,也可以修改为api-member
+#    api-a:
+#      ### 客户端请求http://127.0.0.1/api-member开头的，都会转发到会员服务
+#      path: /api-member/**
+#      #这里的app-member是会员服务在注册中心中的别名
+#      #zuul网关默认整合ribbon,自动实现负载均衡轮训效果
+#      serviceId: app-member
+#    api-b:
+#      path: /api-order/**
+#      serviceId: app-order
+
+#actuaor监控中心，开启所有端点，手动触发刷新本地缓存读取最新git配置文件所用
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # * 在yaml 文件属于关键字，所以需要加引号
+eureka:
+  client:
+    serviceUrl:
+      ###当前会员服务注册到eureka服务中心（所有eureka集群地址）
+      defaultZone: http://eureka-server1:7100/eureka/
+
