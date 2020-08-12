@@ -16,6 +16,19 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
+
+        <!-- 分布式配置中心相关依赖#################################start -->
+        <!-- springCloud整合config-server分布式配置中心client -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+        <!--actuaor监控中心,手动触发刷新本地读取git中配置文件缓存所用-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- 分布式配置中心相关依赖#################################end -->
     </dependencies>
 
 </project>

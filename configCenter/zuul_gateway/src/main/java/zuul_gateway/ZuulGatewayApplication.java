@@ -3,9 +3,12 @@ package zuul_gateway;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 
 @SpringBootApplication
 //@EnableEurekaClient 将当前服务注册到Eureka
@@ -19,5 +22,12 @@ public class ZuulGatewayApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(ZuulGatewayApplication.class);
+    }
+
+    // zuul配置使用git中config实现实时更新
+    @RefreshScope
+    @ConfigurationProperties("zuul")
+    public ZuulProperties zuulProperties() {
+        return new ZuulProperties();
     }
 }
