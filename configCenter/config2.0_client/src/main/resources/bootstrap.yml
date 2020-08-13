@@ -12,10 +12,13 @@ spring:
       profile: dev
       #读取配置文件服务的config-server环境
       #也就是配置中心服务端在eureka注册的服务别名
-      discovery:
-        service-id: config-server
-        #开启读取权限
-        enabled: true
+      #discovery:
+      #  service-id: config-server
+      #  #开启读取权限
+      #  enabled: true
+
+      # 也可以直接指定分布式配置中心地址,不从eureka中获取
+      uri: http://127.0.0.1:8201
 
 #注册中心地址
 eureka:
