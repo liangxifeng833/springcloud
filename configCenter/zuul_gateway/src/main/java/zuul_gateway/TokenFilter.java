@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author liangxifeng
  * @date 2020-08-09
  */
-@Component
+//@Component
 public class TokenFilter extends ZuulFilter {
     @Value("${server.port}")
     private String serverPort;
