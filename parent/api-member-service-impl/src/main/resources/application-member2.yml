@@ -9,3 +9,7 @@ eureka:
     register-with-eureka: true
     ###需要去检索服务信息
     fetch-registry:   true
+
+### swagger扫包范围
+swagger:
+  base-package: api.member.servcie.impl

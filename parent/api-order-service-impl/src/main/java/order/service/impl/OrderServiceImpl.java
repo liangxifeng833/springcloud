@@ -4,19 +4,19 @@ import api.common.base.BaseApiService;
 import api.common.base.ResponseBase;
 import api.member.entity.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import order.service.IOrderService;
 import order.service.feign.MemberServiceFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 订单服务controller 实现order-service项目中的接口
  */
 @RestController
+@Api(tags = "订单服务接口")
 public class OrderServiceImpl extends BaseApiService implements IOrderService {
     @Autowired
     private MemberServiceFeign memberServiceFeign;
@@ -29,7 +29,14 @@ public class OrderServiceImpl extends BaseApiService implements IOrderService {
     }
 
 
-    @RequestMapping("/orderToMember")
+    @ApiOperation("获取订单接口")
+    @PostMapping("/getOrder")
+    public String getOrder()
+    {
+        return "我订单服务getOrder方法";
+    }
+
+    @GetMapping("/orderToMember")
     @Override
     public String orderToMember(String name) {
         User user = memberServiceFeign.getMember(name);
@@ -37,7 +44,7 @@ public class OrderServiceImpl extends BaseApiService implements IOrderService {
     }
 
     //没有解决服务雪崩效应
-    @RequestMapping("/orderToMemberUserInfo")
+    @GetMapping("/orderToMemberUserInfo")
     @Override
     public ResponseBase orderToMemberUserInfo() {
         return memberServiceFeign.getUserInfo();
@@ -61,7 +68,7 @@ public class OrderServiceImpl extends BaseApiService implements IOrderService {
      * @return
      */
     @HystrixCommand(fallbackMethod = "orderToMemberUserInfoHystrixFallback")
-    @RequestMapping("/orderToMemberUserInfoHystrix")
+    @GetMapping("/orderToMemberUserInfoHystrix")
     public ResponseBase orderToMemberUserInfoHystrix() {
         //输出：orderToMemberUserInfoHystrix-线程池名称：hystrix-OrderServiceImpl-1
         System.out.println("orderToMemberUserInfoHystrix-线程池名称："+Thread.currentThread().getName());
@@ -72,7 +79,7 @@ public class OrderServiceImpl extends BaseApiService implements IOrderService {
      * Hystrix第二种写法,使用类方式实现服务降级
      * @return
      */
-    @RequestMapping("/orderToMemberUserInfoHystrix_demo02")
+    @GetMapping("/orderToMemberUserInfoHystrix_demo02")
     public ResponseBase orderToMemberUserInfoHystrixDemo02() {
         //输出：orderToMemberUserInfoHystrix-线程池名称：hystrix-OrderServiceImpl-1
         System.out.println("orderToMemberUserInfoHystrix-线程池名称："+Thread.currentThread().getName());
@@ -84,7 +91,7 @@ public class OrderServiceImpl extends BaseApiService implements IOrderService {
     }
 
     //订单服务接口
-    @RequestMapping("/orderInfo")
+    @GetMapping("/orderInfo")
     @Override
     public ResponseBase orderInfo() {
         //输出：orderInfo-线程池名称：http-nio-8103-exec-7

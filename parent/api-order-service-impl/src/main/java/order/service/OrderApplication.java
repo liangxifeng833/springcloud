@@ -1,5 +1,6 @@
 package order.service;
 
+import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -15,6 +16,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 //开启服务保护功能
 @EnableHystrix
+//开启swagger生成api文档的注解
+@EnableSwagger2Doc
 public class OrderApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

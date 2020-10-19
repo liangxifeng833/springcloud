@@ -4,3 +4,8 @@ spring:
     name: app-member
   profiles:
     active: member1
+
+### swagger扫包范围
+swagger:
+  base-package: api.member.servcie.impl
+

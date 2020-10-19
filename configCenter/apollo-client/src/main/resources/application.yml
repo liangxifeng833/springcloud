@@ -1,4 +1,4 @@
 server:
   port: 8201
 
-app.id: appId_1001
+app.id: SampleApp

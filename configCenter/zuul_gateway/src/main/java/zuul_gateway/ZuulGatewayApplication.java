@@ -1,5 +1,6 @@
 package zuul_gateway;
 
+import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -15,6 +16,8 @@ import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 @EnableEurekaClient
 //开启Zuul网关代理
 @EnableZuulProxy
+//开启swagger文档
+@EnableSwagger2Doc
 public class ZuulGatewayApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(ZuulGatewayApplication.class, args);

@@ -26,6 +26,10 @@ feign:
   hystrix:
     enabled: true
 
+### swagger扫包范围
+swagger:
+  base-package: order.service
+
 ### 禁用hystrix超时时间,默认1秒
 #hystrix:
 #  command:
